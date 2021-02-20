@@ -1,0 +1,656 @@
+// -----------------------------------------------------------------------------
+// This file contains all styles related to the common parts in all application
+// -----------------------------------------------------------------------------
+
+//page styles
+main {
+  margin-top: 89px;
+  @include mq("tablet") {
+    margin-top: 102px;
+  }
+  @include mq("desktop-small") {
+    margin-top: 131px;
+  }
+}
+.section {
+}
+.container {
+  max-width: 1322px;
+  padding: 0 22px;
+  margin: 0 auto;
+}
+br {
+  display: none;
+  @include mq("tablet") {
+    display: block;
+  }
+}
+.slick-slider {
+}
+//start icon
+.start-icon-container {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  // display: none;
+  display: block;
+  width: 150px;
+  height: 150px;
+  @include mq("desktop-small") {
+    width: 192px;
+    height: 192px;
+  }
+  img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  .stop-icon {
+    width: 50%;
+    height: 50%;
+    top: 50%;
+    left: 50%;
+    position: absolute;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transform-origin: center center;
+  }
+}
+.start-icon {
+  opacity: 1;
+  @extend .transition;
+}
+
+.start-icon-hover {
+  opacity: 0;
+  @extend .transition;
+}
+
+//Hero section
+.hero {
+  background-color: $orange;
+  min-height: 194px;
+  display: flex;
+  align-items: center;
+  @include mq("tablet") {
+    min-height: 366px;
+  }
+  .container {
+    width: 100%;
+  }
+  .section-title {
+    max-width: 254px;
+    margin-right: auto;
+    span {
+      position: relative;
+      text-decoration: underline;
+      text-decoration-color: $white;
+      text-decoration-skip-ink: none;
+    }
+    @include mq("phone") {
+      max-width: 660px;
+    }
+  }
+  &.new-line {
+    br {
+      display: block;
+    }
+  }
+}
+
+//Introduction section
+.introduction {
+  background: $dark;
+  padding: 47px 0 50px;
+  @include mq("tablet") {
+    padding: 74px 0 91px;
+  }
+  .section-title {
+    color: $white;
+    span {
+      position: relative;
+      text-decoration: underline;
+      text-decoration-color: orange;
+      text-decoration-skip-ink: none;
+      text-underline-offset: 4px;
+    }
+  }
+  &.art-int {
+    .section-title {
+      max-width: 1005px;
+    }
+  }
+  &.bi-week {
+    .section-title {
+      max-width: 893px;
+    }
+  }
+}
+
+//Carousel section
+.podcast {
+  background: $white;
+  padding: 30px 0 22px;
+  .container {
+    padding: 0 10px;
+  }
+  @include mq("tablet-small") {
+    padding: 62px 0 45px;
+  }
+  &-media {
+    padding-top: 42px;
+    text-align: center;
+    @include mq("tablet") {
+      padding-top: 72px;
+    }
+    &__title {
+      color: $orange;
+      margin-bottom: 20px;
+      @include mq("tablet-small") {
+        margin-bottom: 13px;
+      }
+    }
+    &__items {
+      display: flex;
+      justify-content: space-evenly;
+      flex-direction: column;
+      max-width: 300px;
+      margin: auto;
+      align-items: center;
+      @include mq("phone") {
+        flex-direction: row;
+      }
+    }
+    &__item {
+      position: relative;
+      @include bodyText("large");
+      color: $dark;
+      margin-bottom: 20px;
+      @include menuEffect($orange, "left-to-right");
+      @include hoverEffect();
+    }
+  }
+  &-carousel {
+    width: 100%;
+    &__container {
+      position: relative;
+      padding: 0px 70px 0 0;
+      overflow: hidden;
+      margin: 0 -15px;
+      margin: auto;
+      max-width: 450px;
+      @include mq("tablet-small") {
+        max-width: 700px;
+      }
+      @include mq("desktop-small") {
+        max-width: 100vw;
+      }
+      .slick-list {
+        overflow: visible;
+      }
+      &::before {
+        position: absolute;
+        content: "";
+        top: 0;
+        right: 0;
+        z-index: 1;
+        height: 100%;
+        width: 15%;
+        background-image: linear-gradient(
+          to right,
+          rgba(0, 0, 0, 0),
+          rgba(255, 255, 255, 1)
+        );
+        margin-right: -1px;
+        @include mq("tablet") {
+          width: 10%;
+        }
+        @include mq("desktop-small") {
+          width: 6%;
+        }
+      }
+    }
+    &__single {
+      padding: 0 13.5px;
+      height: auto !important;
+      &.active {
+        .podcast-carousel__details {
+          .start-play {
+            opacity: 0;
+            visibility: hidden;
+            @extend .cubic-transition;
+          }
+          .start-stop {
+            opacity: 1;
+            visibility: visible;
+            @extend .cubic-transition;
+          }
+          .abstraction-title {
+            color: $white;
+            @extend .cubic-transition;
+          }
+        }
+      }
+    }
+    &__wrapper {
+      position: relative;
+      overflow: hidden;
+      // min-width: 256px;
+      @include mq("tablet") {
+        min-width: initial;
+      }
+      .image-wrapper {
+        position: relative;
+        line-height: 0;
+        img {
+          width: 100%;
+        }
+      }
+    }
+    &__details {
+      position: relative;
+      background: $orange;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 14px;
+      z-index: $z-header;
+      .abstraction {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        &-number {
+          @include bodyText("large");
+          color: white;
+          margin-bottom: 5px;
+        }
+        &-title {
+          font-size: 18px;
+          line-height: 1.025;
+          @extend .cubic-transition;
+        }
+      }
+      .start {
+        position: relative;
+        width: 21px;
+        height: 24px;
+        cursor: pointer;
+        margin-right: 0;
+        &:hover {
+          transform: scale(1.1);
+          @extend .transition;
+        }
+        @extend .cubic-transition;
+        @include mq("tablet") {
+          margin-right: 10px;
+        }
+        &-play {
+          position: absolute;
+          opacity: 1;
+          @extend .cubic-transition;
+        }
+        &-stop {
+          position: absolute;
+          opacity: 0;
+          visibility: hidden;
+          @extend .cubic-transition;
+        }
+      }
+    }
+  }
+  &.vi-page {
+    .podcast-carousel {
+      &__details {
+        min-height: 86px;
+      }
+      &__single {
+        p {
+          @extend .transition;
+        }
+        &.active {
+          .abstraction {
+            flex-direction: row;
+            p {
+              color: $white;
+              @extend .transition;
+            }
+          }
+        }
+      }
+      .abstraction {
+        p {
+          &:first-child {
+            margin-right: 10px;
+          }
+        }
+      }
+    }
+  }
+}
+
+//Action section
+.action {
+  background-color: $gray;
+  padding: 23px 0;
+  @include mq("phablet") {
+    padding: 33px 0 39px;
+  }
+  &-call {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    max-width: 350px;
+    margin: auto;
+    @include mq("phablet") {
+      max-width: initial;
+    }
+    &__container {
+      position: relative;
+      display: flex;
+      border-bottom: 2px solid $orange;
+      align-items: center;
+      width: 100%;
+      order: 1;
+      @include mq("phablet") {
+        width: 54%;
+        order: 0;
+      }
+    }
+    &__desc {
+      margin-bottom: 51px;
+      @include mq("phablet") {
+        margin-bottom: 0;
+      }
+    }
+    &__link {
+      position: relative;
+      display: inline-block;
+      padding-right: 15px;
+      color: $orange;
+      @include menuEffect($orange, "left-to-right");
+      @include hoverEffect();
+      @include arrow();
+      p {
+        font-size: 22px;
+        @include mq("phablet") {
+          font-size: 24px;
+        }
+      }
+    }
+    &__title {
+      max-width: 310px;
+      margin-bottom: 14px;
+      @include mq("tablet") {
+        max-width: 554px;
+        margin-bottom: 46px;
+      }
+    }
+    &__title__series {
+      color: $orange;
+    }
+    &__meta {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: 9px;
+      justify-content: space-between;
+      display: flex;
+      color: $orange;
+      p {
+        font-size: 14px;
+        @include mq("tablet") {
+          font-size: 16px;
+        }
+      }
+    }
+    &__img {
+      line-height: 0;
+      width: 100%;
+      margin-bottom: 15px;
+      max-height: 220px;
+      @include mq("phablet") {
+        width: 43%;
+        margin-bottom: 0;
+        max-height: initial;
+      }
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+  }
+}
+
+//Video section
+.movie {
+  background-color: $dark;
+  padding: 43px 0;
+  @include mq("tablet") {
+    padding: 74px 0 69px;
+  }
+  video {
+    width: 100%;
+  }
+  iframe {
+    width: 100%;
+    height: 50vw;
+    max-height: 730px;
+  }
+}
+
+//Error section
+.Requesterror {
+  background-color: $orange;
+  height: calc(100vh - 90px);
+  display: flex;
+  align-items: center;
+  min-height: 450px;
+  @include mq("tablet") {
+    height: calc(100vh - 109px);
+  }
+  @include mq("desktop-small") {
+    height: calc(100vh - 132px);
+  }
+  &-wrapper {
+    text-align: center;
+  }
+  &-title {
+    color: $white;
+    font-size: 160px;
+    @include mq("tablet") {
+      font-size: 240px;
+    }
+    @include mq("desktop-small") {
+      font-size: 321px;
+    }
+  }
+  &-subtitle {
+    font-size: 35px;
+    line-height: 1.196;
+    color: $white;
+    margin-bottom: 40px;
+    max-width: 264px;
+    @include mq("phone") {
+      max-width: initial;
+    }
+    @include mq("tablet") {
+      font-size: 51px;
+    }
+  }
+  &-redirect {
+    display: inline-block;
+    color: $dark;
+    position: relative;
+    padding-right: 20px;
+    @include p-arrow("right", $dark);
+    @include hoverEffect();
+    @include menuEffect($white, "left-to-right");
+    p {
+      line-height: 1.045;
+      font-size: 26px;
+      @include mq("tablet") {
+        font-size: 24px;
+      }
+    }
+  }
+}
+
+//cookie section
+.cookie {
+  background: $dark;
+  padding: 23px 0 40px;
+  text-align: center;
+  @include mq("tablet") {
+    padding: 37px 70px;
+  }
+  .container {
+    max-width: 752px;
+    margin: auto;
+  }
+  &-title {
+    color: $white;
+    margin-bottom: 11px;
+    @include mq("tablet-small") {
+      margin-bottom: 18px;
+    }
+  }
+  &-content {
+    font-family: Roboto;
+    line-height: 1.365;
+    font-size: 12px;
+    letter-spacing: 0.015em;
+    color: $white;
+    margin-bottom: 20px;
+    @include mq("tablet-small") {
+      margin-bottom: 30px;
+      font-size: 18px;
+    }
+  }
+  &-btn__container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 277px;
+    margin: auto;
+  }
+  &-btn {
+    font-family: "TT COMMONS";
+    line-height: 1.025;
+    background: transparent;
+    border: 2px solid $white;
+    width: 111px;
+    padding: 6px 0 4px 0;
+    color: $white;
+    border-radius: 32px;
+    font: 19px;
+    @include mq("tablet") {
+      font-size: 22px;
+      padding: 7px 0 2px 0;
+    }
+  }
+}
+
+//transfer section
+.transfer {
+  background: $white;
+  padding-bottom: 43px;
+  margin-top: -1px;
+  @include mq("tablet") {
+    padding-bottom: 60px;
+  }
+  .container {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+  }
+  &-left {
+    width: 100%;
+    max-width: 180px;
+    @include mq("tablet") {
+      width: 34.5%;
+      max-width: initial;
+    }
+    @include mq("desktop-small") {
+      display: block;
+    }
+  }
+  &-right {
+    width: 100%;
+    font-family: Roboto;
+    @include mq("tablet") {
+      width: 65.5%;
+      margin: auto;
+    }
+  }
+  &-direction {
+    max-width: 640px;
+    display: flex;
+    justify-content: space-between;
+    font-family: TT Commons;
+    flex-direction: column;
+    margin: auto;
+    @include mq("phone") {
+      flex-direction: row;
+    }
+    @include mq("tablet") {
+      max-width: 620px;
+      margin: initial;
+    }
+    p {
+      line-height: 1.025;
+    }
+    a {
+      color: $orange;
+      display: inline-block;
+      padding-bottom: 13px;
+    }
+    &__prev {
+      order: 1;
+      margin-top: 10px;
+      @include mq("phone") {
+        order: 0;
+        margin-top: 60px;
+      }
+      h5 {
+        position: relative;
+        padding-left: 10px;
+        padding-bottom: 0;
+        @include mq("desktop-small") {
+          padding-left: 10px;
+        }
+        @include p-arrow();
+        @include p-arrowEffect();
+      }
+      p {
+        padding-left: 10px;
+      }
+    }
+    &__next {
+      text-align: right;
+      margin-top: 0;
+      @include mq("phone") {
+        order: 0;
+        margin-top: 60px;
+      }
+      h5 {
+        position: relative;
+        padding-right: 15px;
+        padding-bottom: 0;
+        @include p-arrow("right");
+        @include p-arrowEffect("right");
+        @include mq("desktop-small") {
+          padding-right: 10px;
+        }
+      }
+      p {
+        padding-right: 15px;
+        @include mq("desktop-small") {
+          padding-right: 10px;
+        }
+      }
+    }
+  }
+}

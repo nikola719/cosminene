@@ -1,0 +1,67 @@
+.slick-prev,
+.slick-next {
+  z-index: 1;
+  width: 25px;
+  height: 25px;
+  border: 2px solid $white;
+  background-color: $white;
+  border-radius: 50%;
+  outline: none;
+  transform: translate(0, 0);
+  top: 39%;
+  @include mq("tablet-small") {
+  }
+  @include mq("desktop-small") {
+    top: 36%;
+  }
+  @include mq("desktop") {
+  }
+  &::before {
+    opacity: 0;
+    display: none;
+  }
+  &::after {
+    position: absolute;
+    content: "";
+    border-color: #fe9a22 #fe9a22 transparent transparent;
+    border-style: solid;
+    border-width: 2px;
+    // transform: rotate(45deg) translate(-50%, -50%);
+    transform: rotate(45deg);
+    // right: 39%;
+    right: 8px;
+    // top: 62%;
+    top: 6px;
+    width: 10px;
+    height: 10px;
+  }
+  &:hover {
+    background-color: $white;
+    color: initial;
+  }
+  &:focus {
+    background-color: $white;
+    color: initial;
+  }
+}
+
+.slick-prev {
+  left: 25px;
+  &::after {
+    border-color: transparent transparent #fe9a22 #fe9a22;
+    // right: 19%;
+    right: 3px;
+  }
+}
+.slick-next {
+  right: 18px;
+  &::after {
+  }
+}
+.slick-arrow {
+  @extend .transition;
+  &:hover {
+    @extend .transition;
+    opacity: 0.7;
+  }
+}
